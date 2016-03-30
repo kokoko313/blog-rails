@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   end
 
   def create 
-    @contact=Contact.new(params_params)
+    @contact=Contact.new(contact_params)
     if @contact.valid? 
       @contact.save
     else
@@ -14,7 +14,7 @@ class ContactsController < ApplicationController
 
   private
 
-  def params_params
+  def contact_params
     params.require(:contact).permit(:email,:message)  
   end
 
