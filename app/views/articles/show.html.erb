@@ -1,4 +1,33 @@
+
+<%= link_to 'All articles', articles_path %>
+<hr>
 <h1><%= @article.title %></h1>
 <p><%= @article.text %></p>
 
-<%= link_to 'All articles', articles_path %>
+
+<h1>Comments</h1>
+<% @article.comments.each do  |comment| %>
+<p>
+<h1><%=comment.body%></h1>
+</p>
+<p>
+created by <%=comment.author%>
+<%= distance_of_time_in_words_to_now(comment.created_at) %> ago
+</p>
+<%end%>
+
+<h1> New comment </h1>
+ 
+<%= form_for([@article, @article.comments.build]) do |f| %>
+    <p>
+    <%= f.label :author %><br/>
+    <%= f.text_field :author %>
+    </p>
+    <p>
+    <%= f.label :body %><br/>
+    <%= f.text_area :body %>
+    </p>
+    <%= f.submit %> 
+
+<% end %>
+
