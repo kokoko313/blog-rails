@@ -11,7 +11,7 @@
 
 <% if user_signed_in? %>
 
-<a class="btn btn-primary" <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<a class="btn btn-primary" <%= link_to "Sign out #{current_user.email}", destroy_user_session_path, method: :delete %>
 
 <% else %>
 
