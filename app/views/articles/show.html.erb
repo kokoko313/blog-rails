@@ -16,12 +16,13 @@ created by <%=comment.author%>
 </p>
 <%end%>
 
+
+<% if  current_user %>
 <h1> New comment </h1>
- 
 <%= form_for([@article, @article.comments.build]) do |f| %>
-    <p>
-    <%= f.label :author %><br/>
-    <%= f.text_field :author %>
+    <p style="display: none">
+        <%= f.label :author %><br/>
+        <%= f.text_field :author, :value => current_user.username %>
     </p>
     <p>
     <%= f.label :body %><br/>
@@ -29,5 +30,6 @@ created by <%=comment.author%>
     </p>
     <%= f.submit %> 
 
+<% end %>
 <% end %>
 
