@@ -46,3 +46,10 @@ group :development do
 end
 
 gem 'devise'
+
+group :development,:test do
+
+  gem 'rspec-rails', '~> 2.4'
+  gem 'capybara'
+  
+end
